@@ -2,6 +2,7 @@ package com.jinnyshop5.Member.model;
 
 import com.jinnyshop5.Member.constant.Role;
 import com.jinnyshop5.Member.dto.MemberFormDto;
+import com.jinnyshop5.model.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @Column(name="member_id")

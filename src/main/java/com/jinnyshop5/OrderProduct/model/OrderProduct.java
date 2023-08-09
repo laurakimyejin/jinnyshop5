@@ -2,6 +2,7 @@ package com.jinnyshop5.OrderProduct.model;
 
 import com.jinnyshop5.Order.model.Order;
 import com.jinnyshop5.Product.model.Product;
+import com.jinnyshop5.model.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-public class OrderProduct {
+public class OrderProduct extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -33,8 +34,6 @@ public class OrderProduct {
 
     private int count; //수량.
 
-    private LocalDateTime regTime;
 
-    private LocalDateTime updateTime;
 
 }

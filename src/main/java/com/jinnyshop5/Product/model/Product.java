@@ -27,8 +27,6 @@ public class Product {
     @Column(nullable = false)
     private String productDetail;//상품상세설명
 
-    @Column(nullable= false, name="image")
-    private String image;//상품이미지
 
     @Column(nullable = false, name="price")
     private int price;//상품가격
