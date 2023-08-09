@@ -1,6 +1,10 @@
-package com.jinnyshop5.repository;
+package com.jinnyshop5.product.repository;
 
-import com.jinnyshop5.entity.Product;
+import com.jinnyshop5.product.dto.MainProductDto;
+import com.jinnyshop5.product.dto.ProductSearchDto;
+import com.jinnyshop5.product.entity.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.jpa.repository.Query;
@@ -27,6 +31,8 @@ public interface ProductRepository extends JpaRepository<Product, Long>,
     /*상품설명 검색*/
     @Query("SELECT p from Product p where p.productDetail like %:productDetail% order by p.price desc")
     List<Product> findByProductDetail(@Param("productDetail") String productDetail);
+
+    Page<MainProductDto> getMainProductPage(ProductSearchDto productSearchDto, Pageable pageable);
 
 //    @Query(value = "SELECT p from Product p where p.productDetail like %:productDetail% order by p.price desc",
 //            nativeQuery = true)

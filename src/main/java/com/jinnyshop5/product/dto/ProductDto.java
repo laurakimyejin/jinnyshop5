@@ -1,4 +1,4 @@
-package com.jinnyshop5.dto;
+package com.jinnyshop5.product.dto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.jinnyshop5.dto;
+package com.jinnyshop5.member.dto;
 
 /*회원가입시 넘어오는 가입정보 담는 dto*/
 

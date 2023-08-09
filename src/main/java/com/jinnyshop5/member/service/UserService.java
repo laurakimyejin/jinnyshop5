@@ -1,7 +1,7 @@
-package com.jinnyshop5.service;
+package com.jinnyshop5.member.service;
 
-import com.jinnyshop5.entity.User;
-import com.jinnyshop5.repository.UserRepository;
+import com.jinnyshop5.member.entity.User;
+import com.jinnyshop5.member.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

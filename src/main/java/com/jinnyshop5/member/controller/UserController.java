@@ -1,8 +1,8 @@
-package com.jinnyshop5.controller;
+package com.jinnyshop5.member.controller;
 
-import com.jinnyshop5.dto.UserFormDto;
-import com.jinnyshop5.entity.User;
-import com.jinnyshop5.service.UserService;
+import com.jinnyshop5.member.dto.UserFormDto;
+import com.jinnyshop5.member.entity.User;
+import com.jinnyshop5.member.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

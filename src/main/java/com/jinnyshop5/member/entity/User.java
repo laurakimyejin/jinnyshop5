@@ -1,7 +1,7 @@
-package com.jinnyshop5.entity;
+package com.jinnyshop5.member.entity;
 
-import com.jinnyshop5.constant.Role;
-import com.jinnyshop5.dto.UserFormDto;
+import com.jinnyshop5.member.constant.Role;
+import com.jinnyshop5.member.dto.UserFormDto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
