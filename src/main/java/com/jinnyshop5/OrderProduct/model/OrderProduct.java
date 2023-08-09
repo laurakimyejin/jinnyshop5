@@ -31,7 +31,7 @@ public class OrderProduct {
 
     private int orderPrice; //주문가격
 
-    private int count; //수량
+    private int count; //수량.
 
     private LocalDateTime regTime;
 
