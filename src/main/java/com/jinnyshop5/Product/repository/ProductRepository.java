@@ -24,9 +24,9 @@ public interface ProductRepository extends JpaRepository<Product, Long>,
     /*Sort*/
     List<Product> findByPriceLessThanOrderByPriceDesc(Integer price);
 
-    /*상품설명 검색*/
-    @Query("SELECT p from Product p where p.productDetail like %:productDetail% order by p.price desc")
-    List<Product> findByProductDetail(@Param("productDetail") String productDetail);
+    /*상품설명 검색--일단 주석으로 함. 왜 에러인지 모르겠음*/
+//    @Query("SELECT p from Product p where p.productDetail like %:productDetail% order by p.price desc")
+//    List<Product> findByProductDetail(@Param("productDetail") String productDetail);
 
 //    @Query(value = "SELECT p from Product p where p.productDetail like %:productDetail% order by p.price desc",
 //            nativeQuery = true)
