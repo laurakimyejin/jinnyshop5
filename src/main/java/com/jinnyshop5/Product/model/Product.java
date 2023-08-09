@@ -1,6 +1,6 @@
-package com.jinnyshop5.entity;
+package com.jinnyshop5.Product.model;
 
-import com.jinnyshop5.constant.ProductStatus;
+import com.jinnyshop5.Product.constant.ProductStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

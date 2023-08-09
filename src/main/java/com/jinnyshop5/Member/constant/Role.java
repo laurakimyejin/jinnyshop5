@@ -1,4 +1,4 @@
-package com.jinnyshop5.constant;
+package com.jinnyshop5.Member.constant;
 
 public enum Role {
     SELLER, CONSUMER

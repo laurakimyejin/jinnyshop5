@@ -1,6 +1,6 @@
-package com.jinnyshop5.repository;
+package com.jinnyshop5.Product.repository;
 
-import com.jinnyshop5.entity.Product;
+import com.jinnyshop5.Product.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.jpa.repository.Query;
