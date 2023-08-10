@@ -90,7 +90,7 @@ public class ProductService {
         }
     */
     @Transactional(readOnly = true)
-    public Page<MainProductDto> getMainItemPage(ProductSearchDto productSearchDto, Pageable pageable){
+    public Page<MainProductDto> getMainProductPage(ProductSearchDto productSearchDto, Pageable pageable){
         return productRepository.getMainProductPage(productSearchDto, pageable);
     }
 

@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.jinnyshop5.OrderProduct.model.QOrderProduct.orderProduct;
+
 @Entity
 @Table(name = "Orders")
 @Getter
@@ -39,9 +41,38 @@ public class Order {
     //orphanRemoval-oder에서 order product 삭제 했을때, order produuct 함께 삭제
     private List<OrderProduct> orderProducts = new ArrayList<>();//하나의 주문-여러주문상품이라서 리스트
 
-    private LocalDateTime regTime;
+    public void addOrderProduct(OrderProduct orderProduct) {
+        orderProducts.add(orderProduct);
+        orderProduct.setOrder(this);
+    }
 
-    private LocalDateTime updateTime;
+    public static Order createOrder(Member member, List<OrderProduct> orderProductList) {
+        Order order = new Order();
+        order.setMember(member);
+
+        for(OrderProduct orderProduct : orderProductList) {
+            order.addOrderProduct(orderProduct);
+        }
+
+        order.setOrderStatus(OrderStatus.ORDER);
+        order.setOrderDate(LocalDateTime.now());
+        return order;
+    }
+
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for(OrderProduct orderProduct : orderProducts){
+            totalPrice += orderProduct.getTotalPrice();
+        }
+        return totalPrice;
+    }
+
+    public void cancelOrder() {
+        this.orderStatus = OrderStatus.CANCEL;
+        for (OrderProduct orderProduct : orderProducts) {
+            orderProduct.cancel();
+        }
+    }
 
 
 

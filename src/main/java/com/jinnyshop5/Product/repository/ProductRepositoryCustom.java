@@ -1,4 +1,4 @@
-package com.jinnyshop5.ProductImg.repository;
+package com.jinnyshop5.Product.repository;
 import com.jinnyshop5.Product.dto.MainProductDto;
 import com.jinnyshop5.Product.dto.ProductSearchDto;
 import com.jinnyshop5.Product.entity.Product;

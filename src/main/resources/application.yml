@@ -38,3 +38,8 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
     enabled: true
+
+  servlet:
+    multipart:
+      max-file-size: 20MB #파일 한개 당 최대 사이즈
+      max-request-size: 100MB #요청당 최대 파일 크기
