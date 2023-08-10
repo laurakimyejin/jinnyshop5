@@ -16,7 +16,7 @@ public class ProductFormDto {
     private Long id;
 
     @NotNull
-    private String productNm;
+    private String productName;
 
     @NotNull
     private Integer price;

@@ -1,7 +1,7 @@
 package com.jinnyshop5.CartProduct.model;
 
 import com.jinnyshop5.Cart.model.Cart;
-import com.jinnyshop5.Product.model.Product;
+import com.jinnyshop5.Product.entity.Product;
 import lombok.Getter;
 import lombok.Setter;
 

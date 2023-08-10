@@ -1,6 +1,6 @@
 package com.jinnyshop5.Product.entity;
 
-import com.jinnyshop5.product.entity.BaseTimeEntity;
+
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;

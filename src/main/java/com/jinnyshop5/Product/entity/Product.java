@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class Product {
+public class Product extends Number implements Comparable<Object> {
 
     @Id
     @Column(name="product_id")
@@ -51,7 +51,7 @@ public class Product {
 
 
     public void updateProduct(ProductFormDto productFormDto) {
-        this.productName = productFormDto.getProductNm();
+        this.productName = productFormDto.getProductName();
         this.price = productFormDto.getPrice();
         this.stockNumber = productFormDto.getStockNumber();
         this.productDetail = productFormDto.getProductDetail();
@@ -70,4 +70,28 @@ public class Product {
         this.stockNumber += stockNumber;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
+    @Override
+    public int intValue() {
+        return 0;
+    }
+
+    @Override
+    public long longValue() {
+        return 0;
+    }
+
+    @Override
+    public float floatValue() {
+        return 0;
+    }
+
+    @Override
+    public double doubleValue() {
+        return 0;
+    }
 }

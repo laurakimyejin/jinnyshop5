@@ -8,16 +8,16 @@ import lombok.Setter;
 @Setter
 public class MainProductDto {
     private Long id;
-    private String productNm;
+    private String productName;
     private String productDetail;
     private String imgUrl;
     private Integer price;
 
     @QueryProjection
-    public MainProductDto(Long id, String productNm, String itemDetail, String imgUrl, Integer price){
+    public MainProductDto(Long d, String productName, String productDetaile, String imgUrl, Integer price){
         this.id = id;
-        this.productNm = productNm;
-        this.productDetail = productNm;
+        this.productName = productName;
+        this.productDetail = productDetaile;
         this.imgUrl = imgUrl;
         this.price = price;
 

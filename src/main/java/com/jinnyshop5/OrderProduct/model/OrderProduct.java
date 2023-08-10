@@ -1,7 +1,8 @@
 package com.jinnyshop5.OrderProduct.model;
 
 import com.jinnyshop5.Order.model.Order;
-import com.jinnyshop5.Product.model.Product;
+import com.jinnyshop5.Product.entity.Product;
+
 import com.jinnyshop5.model.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
