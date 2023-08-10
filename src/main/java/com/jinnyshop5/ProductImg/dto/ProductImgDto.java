@@ -1,5 +1,7 @@
 package com.jinnyshop5.ProductImg.dto;
-import com.jinnyshop5.ProductImg.model.ProductImg;
+
+
+import com.jinnyshop5.ProductImg.entity.ProductImg;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.ui.ModelMap;

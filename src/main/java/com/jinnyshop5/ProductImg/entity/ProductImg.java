@@ -1,7 +1,7 @@
-package com.jinnyshop5.ProductImg.model;
+package com.jinnyshop5.ProductImg.entity;
 
-import com.jinnyshop5.model.BaseEntity;
-import com.jinnyshop5.Product.model.Product;
+import com.jinnyshop5.Product.entity.BaseEntity;
+import com.jinnyshop5.Product.entity.Product;
 import lombok.Getter;
 import lombok.Setter;
 

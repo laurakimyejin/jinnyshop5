@@ -1,6 +1,7 @@
 package com.jinnyshop5.ProductImg.repository;
 
-import com.jinnyshop5.ProductImg.model.ProductImg;
+
+import com.jinnyshop5.ProductImg.entity.ProductImg;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,14 +1,12 @@
 package com.jinnyshop5.Product.dto;
 
-import com.jinnyshop5.Product.constant.ProductStatus;
-import com.jinnyshop5.Product.model.Product;
-import com.jinnyshop5.ProductImg.dto.*;
+import com.jinnyshop5.Product.entity.Product;
+import com.jinnyshop5.ProductImg.dto.ProductImgDto;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
-
-
+import com.jinnyshop5.Product.constant.ProductStatus;
 import java.util.ArrayList;
 import java.util.List;
 

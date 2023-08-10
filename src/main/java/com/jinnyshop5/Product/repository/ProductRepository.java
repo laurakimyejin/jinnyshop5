@@ -2,7 +2,7 @@ package com.jinnyshop5.Product.repository;
 
 import com.jinnyshop5.Product.dto.MainProductDto;
 import com.jinnyshop5.Product.dto.ProductSearchDto;
-import com.jinnyshop5.Product.model.Product;
+import com.jinnyshop5.Product.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,26 +15,19 @@ import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long>,
         QuerydslPredicateExecutor<Product> {
-
-    /*상품명으로 검색*/
     List<Product> findByProductName(String productName);
 
-    /*상품명, 상세설명 OR*/
-    List<Product> findByProductNameOrProductDetail(String productName, String productDetail);
+    List<Product> findByItemNmOrItemDetail(String itemNm, String itemDetail);
 
-    /*가격이 적은*/
     List<Product> findByPriceLessThan(Integer price);
 
-    /*Sort*/
     List<Product> findByPriceLessThanOrderByPriceDesc(Integer price);
 
-    /*상품설명 검색--일단 주석으로 함. 왜 에러인지 모르겠음*/
-//    @Query("SELECT p from Product p where p.productDetail like %:productDetail% order by p.price desc")
-//    List<Product> findByProductDetail(@Param("productDetail") String productDetail);
+    @Query("select i from Product i where i.productDetail like %:productDetail% order by i.price desc")
+    List<Product> findByItemDetail(@Param("itemDetail") String itemDetail);
+
+    @Query(value="select * from product i where i.product_detail like %:productDetail% order by i.price desc", nativeQuery = true)
+    List<Product> findByItemDetailByNative(@Param("itemDetail") String itemDetail);
 
     Page<MainProductDto> getMainProductPage(ProductSearchDto productSearchDto, Pageable pageable);
-
-//    @Query(value = "SELECT p from Product p where p.productDetail like %:productDetail% order by p.price desc",
-//            nativeQuery = true)
-//    List<Product> findByProductDetail(@Param("productDetail") String productDetail);
 }

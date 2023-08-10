@@ -1,8 +1,9 @@
 package com.jinnyshop5.ProductImg.service;
 
-import com.jinnyshop5.ProductImg.repository.ProductImgRepository;
+
 import com.jinnyshop5.Product.service.FileService;
-import com.jinnyshop5.ProductImg.model.ProductImg;
+import com.jinnyshop5.ProductImg.entity.ProductImg;
+import com.jinnyshop5.ProductImg.repository.ProductImgRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,6 @@ import javax.persistence.EntityNotFoundException;
 @Transactional
 @RequiredArgsConstructor
 public class ProductImgService {
-
     @Value("${productImgLocation}")
     private String productImgLocation;
 

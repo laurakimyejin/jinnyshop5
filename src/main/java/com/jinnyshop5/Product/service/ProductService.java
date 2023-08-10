@@ -2,13 +2,14 @@ package com.jinnyshop5.Product.service;
 
 import com.jinnyshop5.Product.dto.MainProductDto;
 import com.jinnyshop5.Product.dto.ProductFormDto;
+import com.jinnyshop5.ProductImg.dto.ProductImgDto;
 import com.jinnyshop5.Product.dto.ProductSearchDto;
-import com.jinnyshop5.Product.model.Product;
-import com.jinnyshop5.ProductImg.model.ProductImg;
-import com.jinnyshop5.Product.repository.ProductRepository;
-import com.jinnyshop5.ProductImg.service.ProductImgService;
+import com.jinnyshop5.Product.entity.Product;
+import com.jinnyshop5.ProductImg.entity.ProductImg;
 import com.jinnyshop5.ProductImg.repository.ProductImgRepository;
+import com.jinnyshop5.Product.repository.ProductRepository;
 
+import com.jinnyshop5.ProductImg.service.ProductImgService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -91,5 +92,9 @@ public class ProductService {
     @Transactional(readOnly = true)
     public Page<MainProductDto> getMainItemPage(ProductSearchDto productSearchDto, Pageable pageable){
         return productRepository.getMainProductPage(productSearchDto, pageable);
+    }
+
+    public ProductFormDto getProductDetail(Long productId) {
+        return getProductDetail(productId);
     }
 }
