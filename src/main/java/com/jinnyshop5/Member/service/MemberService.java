@@ -27,7 +27,7 @@ public class MemberService implements UserDetailsService{
 
     /*로그인 할 유저의 아이디를 파라미터로 받음*/
     private void validateDuplicateMember(Member member){
-        Member findMember = memberRepository.findByMembername(member.getMemberName());
+        Member findMember = memberRepository.findByMemberName(member.getMemberName());
         if(findMember != null){
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
@@ -35,7 +35,7 @@ public class MemberService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String memberName) throws UsernameNotFoundException{
-        Member member = memberRepository.findByMembername(memberName);
+        Member member = memberRepository.findByMemberName(memberName);
 
         if(member == null){
             throw new UsernameNotFoundException(memberName);
