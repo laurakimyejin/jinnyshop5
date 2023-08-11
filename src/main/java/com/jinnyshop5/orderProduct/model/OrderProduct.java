@@ -3,7 +3,7 @@ package com.jinnyshop5.orderProduct.model;
 import com.jinnyshop5.order.model.Order;
 import com.jinnyshop5.product.entity.Product;
 
-import com.jinnyshop5.model.BaseEntity;
+import com.jinnyshop5.common.model.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 

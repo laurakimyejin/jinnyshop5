@@ -17,7 +17,7 @@ import javax.persistence.EntityNotFoundException;
 @Transactional
 @RequiredArgsConstructor
 public class ProductImgService {
-    @Value("${productImgLocation}")
+    @Value("${local.img.dir}")
     private String productImgLocation;
 
     private final ProductImgRepository productImgRepository;

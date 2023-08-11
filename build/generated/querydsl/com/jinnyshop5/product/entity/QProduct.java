@@ -10,12 +10,12 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QProduct is a Querydsl query type for product
+ * QProduct is a Querydsl query type for Product
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QProduct extends EntityPathBase<Product> {
 
-    private static final long serialVersionUID = -581940097L;
+    private static final long serialVersionUID = -1375231905L;
 
     public static final QProduct product = new QProduct("product");
 

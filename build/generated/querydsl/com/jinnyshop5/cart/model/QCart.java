@@ -11,12 +11,12 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QCart is a Querydsl query type for cart
+ * QCart is a Querydsl query type for Cart
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QCart extends EntityPathBase<Cart> {
 
-    private static final long serialVersionUID = -275286505L;
+    private static final long serialVersionUID = 721731127L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 

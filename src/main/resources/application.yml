@@ -1,6 +1,10 @@
 server:
   port: 8989
 
+local:
+  img:
+    dir: C:/rest/
+
 spring:
   profiles:
     include: oauth,DBLocation
@@ -26,13 +30,17 @@ spring:
     open-in-view: false
     show-sql: true
 
-  #???? ??
   thymeleaf:
     cache: false
     check-template-location: true
     prefix: classpath:/templates/
     suffix: .html
     enabled: true
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
 
 jwt:
   issuer: pariahs9311@gmail.com

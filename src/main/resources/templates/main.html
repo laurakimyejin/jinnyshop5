@@ -2,11 +2,51 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+  <style>
+    .carousel-inner > .item {
+      height: 350px;
+    }
+    .margin{
+      margin-bottom:30px;
+    }
+    .banner{
+      height: 300px;
+    }
+    .card-text{
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    a:hover{
+      text-decoration:none;
+    }
+    .center{
+      text-align:center;
+    }
+    .banner{
+      position: absolute; top:0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</th:block>
 
-  <div layout:fragment="content">
-    <h1>MAIN</h1>
+<div layout:fragment="content">
+
+  <div id="carouselControls" class="carousel slide margin" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active item">
+        zero
+      </div>
+    </div>
   </div>
 
+  <div class="center">
+  </div>
 
-</html>
+  </div>
+
+</div>
 

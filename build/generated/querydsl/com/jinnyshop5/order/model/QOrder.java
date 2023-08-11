@@ -11,12 +11,12 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QOrder is a Querydsl query type for order
+ * QOrder is a Querydsl query type for Order
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QOrder extends EntityPathBase<Order> {
 
-    private static final long serialVersionUID = 254829613L;
+    private static final long serialVersionUID = 611066957L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 

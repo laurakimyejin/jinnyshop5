@@ -9,7 +9,7 @@ import java.util.List;
 public interface ProductImgRepository extends JpaRepository<ProductImg, Long> {
     List<ProductImg> findByProductOrderByIdAsc(Long productId);
 
-    ProductImg findByItemIdAndRepimgYn(Long productId, String repimgYn);
+    ProductImg findByIdAndRepimgYn(Long productId, String repimgYn);
 
-    List<ProductImg> findByItemIdOrderByIdAsc(Long itemId);
+    List<ProductImg> findByIdOrderByIdAsc(Long itemId);
 }

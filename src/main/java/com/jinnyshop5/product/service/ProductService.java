@@ -70,7 +70,7 @@ public class ProductService {
     @Transactional(readOnly = true)
     public ProductFormDto getItemDtl(Long itemId){
 
-        List<ProductImg> itemImgList = productImgRepository.findByItemIdOrderByIdAsc(itemId);
+        List<ProductImg> itemImgList = productImgRepository.findByIdOrderByIdAsc(itemId);
         List<ProductImgDto> itemImgDtoList = new ArrayList<>();
         for (ProductImg itemImg : itemImgList) {
             ProductImgDto itemImgDto = ProductImgDto.of(itemImg);
@@ -89,10 +89,10 @@ public class ProductService {
             return ProductRepository.getAdminProductPage(itemSearchDto, pageable);
         }
     */
-    @Transactional(readOnly = true)
-    public Page<MainProductDto> getMainItemPage(ProductSearchDto productSearchDto, Pageable pageable){
-        return productRepository.getMainProductPage(productSearchDto, pageable);
-    }
+//    @Transactional(readOnly = true)
+//    public Page<MainProductDto> getMainProductPage(ProductSearchDto productSearchDto, Pageable pageable){
+//        return productRepository.getMainProductPage(productSearchDto, pageable);
+//    }
 
     public ProductFormDto getProductDetail(Long productId) {
         return getProductDetail(productId);

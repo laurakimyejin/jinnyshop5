@@ -11,18 +11,18 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QProductImg is a Querydsl query type for productImg
+ * QProductImg is a Querydsl query type for ProductImg
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QProductImg extends EntityPathBase<ProductImg> {
 
-    private static final long serialVersionUID = -1465138399L;
+    private static final long serialVersionUID = -1026773247L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QProductImg productImg = new QProductImg("productImg");
 
-    public final com.jinnyshop5.product.entity.QBaseEntity _super = new com.jinnyshop5.product.entity.QBaseEntity(this);
+    public final com.jinnyshop5.common.model.QBaseEntity _super = new com.jinnyshop5.common.model.QBaseEntity(this);
 
     //inherited
     public final StringPath createdBy = _super.createdBy;

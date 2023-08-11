@@ -11,18 +11,18 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QOrderProduct is a Querydsl query type for orderProduct
+ * QOrderProduct is a Querydsl query type for OrderProduct
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QOrderProduct extends EntityPathBase<OrderProduct> {
 
-    private static final long serialVersionUID = 1519762807L;
+    private static final long serialVersionUID = -139541097L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QOrderProduct orderProduct = new QOrderProduct("orderProduct");
 
-    public final com.jinnyshop5.model.QBaseEntity _super = new com.jinnyshop5.model.QBaseEntity(this);
+    public final com.jinnyshop5.common.model.QBaseEntity _super = new com.jinnyshop5.common.model.QBaseEntity(this);
 
     public final NumberPath<Integer> count = createNumber("count", Integer.class);
 
