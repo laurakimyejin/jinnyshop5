@@ -8,8 +8,7 @@ local:
 spring:
   profiles:
     include: oauth,DBLocation
-
-
+#--------▲해당 Yml파일에 대한 정보는 노션에▲--------
   devtools:
     livereload:
       enabled: true
