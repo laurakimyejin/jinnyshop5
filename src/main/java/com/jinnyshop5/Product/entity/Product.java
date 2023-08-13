@@ -94,4 +94,8 @@ public class Product extends Number implements Comparable<Object> {
     public double doubleValue() {
         return 0;
     }
+
+    public Product orElseThrow(Object o) {
+        return (Product) o;
+    }
 }

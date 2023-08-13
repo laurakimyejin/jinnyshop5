@@ -35,6 +35,21 @@ public class OrderProduct extends BaseEntity {
 
     private int count; //수량.
 
+    public static OrderProduct createOrderProduct(Product product, int count){
+        OrderProduct orderProduct = new OrderProduct();
+        orderProduct.setProduct(product);
+        orderProduct.setCount(count);
+        orderProduct.setOrderPrice(product.getPrice());
 
+        product.removeStock(count);
+        return orderProduct;
+    }
 
+    public int getTotalPrice(){
+        return orderPrice*count;
+    }
+
+    public void cancel(){
+        this.getProduct().addStock(count);
+    }
 }
