@@ -1,11 +1,9 @@
 package com.jinnyshop5.authencation.config.jwt;
 
 import com.jinnyshop5.member.model.Member;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Header;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +14,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Set;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class TokenProvider {
@@ -38,21 +37,31 @@ public class TokenProvider {
                 .setSubject(member.getEmail())
                 .claim("name", member.getMemberName())
                 .claim("nick", member.getNickname())
-                .claim("auth",member.getRole())
+                .claim("auth", member.getRole())
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .compact();
     }
 
     public boolean validToken(String token) {
         try {
-            Jwts.parser()
+            log.info("---- {}",token);
+            Jwts.parserBuilder()
                     .setSigningKey(jwtProperties.getSecretKey())
+                    .build()
                     .parseClaimsJws(token);
 
+            log.info("JWT Token verification success");
             return true;
-        } catch (Exception e) {
-            return false;
+        } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
+            log.info("Invalid JWT Token", e);
+        } catch (ExpiredJwtException e) {
+            log.info("Expired JWT Token", e);
+        } catch (UnsupportedJwtException e) {
+            log.info("Unsupported JWT Token", e);
+        } catch (IllegalArgumentException e) {
+            log.info("JWT claims string is empty", e);
         }
+        return false;
     }
 
 

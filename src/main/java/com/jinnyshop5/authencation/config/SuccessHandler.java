@@ -26,6 +26,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     public static final Duration REFRESH_TOKEN_DURATION = Duration.ofDays(14);
     public static final Duration ACCESS_TOKEN_DURATION = Duration.ofDays(1);
     public static final String REDIRECT_PATH = "/";
+    public static final String TOKEN_USING_PATH = "/api/token";
 
     private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
@@ -57,7 +58,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         int cookieMaxAge = (int) REFRESH_TOKEN_DURATION.toSeconds();
 
         CookieUtil.deleteCookie(request, response, REFRESH_TOKEN_COOKIE_NAME);
-        CookieUtil.addCookie(response, REFRESH_TOKEN_COOKIE_NAME, refreshToken, cookieMaxAge);
+        CookieUtil.addCookie(response, REFRESH_TOKEN_COOKIE_NAME, refreshToken, cookieMaxAge, TOKEN_USING_PATH);
     }
 
     private String getTargetUrl(String token) {
