@@ -19,6 +19,8 @@ public class QMember extends EntityPathBase<Member> {
 
     public static final QMember member = new QMember("member1");
 
+    public final com.jinnyshop5.common.model.QBaseTimeEntity _super = new com.jinnyshop5.common.model.QBaseTimeEntity(this);
+
     public final StringPath address = createString("address");
 
     public final StringPath email = createString("email");
@@ -33,7 +35,13 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath phoneNumber = createString("phoneNumber");
 
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> regTime = _super.regTime;
+
     public final EnumPath<com.jinnyshop5.member.constant.Role> role = createEnum("role", com.jinnyshop5.member.constant.Role.class);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> updateTime = _super.updateTime;
 
     public QMember(String variable) {
         super(Member.class, forVariable(variable));

@@ -5,6 +5,7 @@ import com.jinnyshop5.member.dto.request.AddMemberRequestDto;
 import com.jinnyshop5.member.dto.request.MemberLoginRequestDto;
 import com.jinnyshop5.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.Principal;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
@@ -32,7 +35,7 @@ public class MemberController {
     @PostMapping("/members/new")
     public String memberForm(AddMemberRequestDto addMemberRequest){
         memberService.memberSave(addMemberRequest);
-        return "redirect:/";
+        return "redirect:/members/login";
     }
 
     //로그인 뷰
@@ -57,8 +60,8 @@ public class MemberController {
     }
 
     @GetMapping("/members/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+    public String logout() {
+
         return "redirect:/members/login";
     }
 

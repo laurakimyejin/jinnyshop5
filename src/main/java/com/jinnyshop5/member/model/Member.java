@@ -1,5 +1,6 @@
 package com.jinnyshop5.member.model;
 
+import com.jinnyshop5.common.model.BaseTimeEntity;
 import com.jinnyshop5.member.constant.Role;
 import com.jinnyshop5.member.dto.MemberFormDto;
 import lombok.*;
@@ -10,25 +11,31 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name="User")
+@Table(name="member")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class Member implements UserDetails {
+public class Member extends BaseTimeEntity implements UserDetails  {
 
     @Id
-    @Column(name="member_id")
+    @Column(name="member_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column
+    private String address;
 
     @Column(name="member_name")
     private String memberName;//아이디
 
+    @Column
+    private String nickname;//이름
+
     @Column(name = "password")
     private String password;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @Column(name="phone_number")
@@ -37,9 +44,7 @@ public class Member implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String nickname;//이름
 
-    private String address;
 
     @Builder
     public Member(Long id, String memberName, String password, String email, String phoneNumber, Role role, String nickname, String address) {

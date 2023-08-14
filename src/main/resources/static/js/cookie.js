@@ -31,8 +31,7 @@ function httpRequest(method, url, body, success, fail) {
         body: body,
     }).then(response => {
         if (response.status === 200 || response.status === 201) {
-            console.log(response.json);
-            return response.json();
+            return success();
         }
         const refresh_token = getCookie('refresh_token');
         if (response.status === 401 && refresh_token) {
@@ -62,14 +61,29 @@ function httpRequest(method, url, body, success, fail) {
     });
 }
 
-var link = document.getElementById('cart');
-if (link) {
-    link.addEventListener('click', function(event) {
-        event.preventDefault();
-        var url = '/api' + link.getAttribute('href');
-        function redirect(){
-            location.replace('/cart');
-        }
-        httpRequest('GET',url,null,redirect,redirect)
-    })
+const logout = document.getElementById('logout');
+if (logout) {
+    console.log("로그아웃")
+    // 로그아웃 링크를 클릭하면 /members/logout로 요청을 보낸다
+    logout.addEventListener('click', event => {
+        event.preventDefault(); // 기본 동작인 페이지 이동을 막음
+        // var url = logout.getAttribute('href'); // a 태그의 href 속성 값을 가져옴
+        var url = "api/token"
+        body = JSON.stringify({
+            refreshToken: getCookie('refresh_token'),
+            subject: localStorage.getItem('access_token')
+        });
+        function success() {
+            alert('로그아웃 성공');
+            location.replace('/members/login');
+        };
+        function fail() {
+            alert('로그아웃 실패');
+            location.replace('/members/login');
+        };
+
+        httpRequest('DELETE', url, body, success, fail)
+        localStorage.removeItem('access_token')
+    });
+    
 }

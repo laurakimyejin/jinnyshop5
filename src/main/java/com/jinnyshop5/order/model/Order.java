@@ -1,5 +1,6 @@
 package com.jinnyshop5.order.model;
 
+import com.jinnyshop5.common.model.BaseTimeEntity;
 import com.jinnyshop5.member.model.Member;
 import com.jinnyshop5.order.constant.OrderStatus;
 import com.jinnyshop5.orderProduct.model.OrderProduct;
@@ -15,7 +16,7 @@ import java.util.List;
 @Table(name = "Orders")
 @Getter
 @Setter
-public class Order {
+public class Order extends BaseTimeEntity {
 
     @Id
     @GeneratedValue
@@ -38,10 +39,6 @@ public class Order {
     //cascade-주문상품선택->order엔티티저장->order product엔티티저장
     //orphanRemoval-oder에서 order product 삭제 했을때, order produuct 함께 삭제
     private List<OrderProduct> orderProducts = new ArrayList<>();//하나의 주문-여러주문상품이라서 리스트
-
-    private LocalDateTime regTime;
-
-    private LocalDateTime updateTime;
 
     public void addOrderProduct(OrderProduct orderProduct) {
         orderProducts.add(orderProduct);

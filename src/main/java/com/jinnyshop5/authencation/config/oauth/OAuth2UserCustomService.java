@@ -1,5 +1,6 @@
 package com.jinnyshop5.authencation.config.oauth;
 
+import com.jinnyshop5.member.constant.Role;
 import com.jinnyshop5.member.model.Member;
 import com.jinnyshop5.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,7 @@ public class OAuth2UserCustomService extends DefaultOAuth2UserService {
                 .orElse(Member.builder()
                         .email(email)
                         .nickname(name)
+                        .role(Role.CONSUMER)
                         .build());
         return memberRepository.save(member);
     }

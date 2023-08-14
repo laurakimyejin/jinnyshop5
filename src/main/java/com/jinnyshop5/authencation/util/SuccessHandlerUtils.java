@@ -17,12 +17,11 @@ import java.time.Duration;
 public class SuccessHandlerUtils {
 
     public static final String REFRESH_TOKEN_COOKIE_NAME = "refresh_token";
-
     public static final String ACCESS_TOKEN_COOKIE_NAME = "access_token";
     public static final Duration REFRESH_TOKEN_DURATION = Duration.ofDays(14);
     public static final Duration ACCESS_TOKEN_DURATION = Duration.ofDays(1);
     public static final String REDIRECT_PATH = "/";
-    public static final String TOKEN_USING_PATH = "/api/token";
+    public static final String TOKEN_USING_PATH = "/";
 
     private final RefreshTokenRepository refreshTokenRepository;
 

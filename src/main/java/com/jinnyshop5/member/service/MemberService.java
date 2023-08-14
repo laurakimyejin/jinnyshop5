@@ -1,5 +1,6 @@
 package com.jinnyshop5.member.service;
 
+import com.jinnyshop5.authencation.repository.RefreshTokenRepository;
 import com.jinnyshop5.member.constant.Role;
 import com.jinnyshop5.member.dto.request.AddMemberRequestDto;
 import com.jinnyshop5.member.dto.request.MemberLoginRequestDto;
@@ -26,8 +27,9 @@ public class MemberService implements UserDetailsService{
 
     private final PasswordEncoder encoder;
     private final MemberRepository memberRepository;
+    private final RefreshTokenRepository refreshTokenRepository;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
-    public String memberLogin(MemberLoginRequestDto requestDto) {
+    public void memberLogin(MemberLoginRequestDto requestDto) {
 
         Authentication authentication =
                 authenticationManagerBuilder.getObject().authenticate(
@@ -35,8 +37,9 @@ public class MemberService implements UserDetailsService{
                                 requestDto.getMemberName(), requestDto.getPassword()
                         )
                 );
-        return "";
     }
+
+
 
     public void memberSave(AddMemberRequestDto dto) {
 
@@ -45,7 +48,7 @@ public class MemberService implements UserDetailsService{
 
         Member member = dto.toEntity();
         member.setPassword(encodePassword);
-        member.setRole(Role.SELLER);
+        member.setRole(Role.CONSUMER);
         memberRepository.save(member);
 
     }

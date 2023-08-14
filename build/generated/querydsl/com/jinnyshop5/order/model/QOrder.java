@@ -22,6 +22,8 @@ public class QOrder extends EntityPathBase<Order> {
 
     public static final QOrder order = new QOrder("order1");
 
+    public final com.jinnyshop5.common.model.QBaseTimeEntity _super = new com.jinnyshop5.common.model.QBaseTimeEntity(this);
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final com.jinnyshop5.member.model.QMember member;
@@ -32,9 +34,11 @@ public class QOrder extends EntityPathBase<Order> {
 
     public final EnumPath<com.jinnyshop5.order.constant.OrderStatus> orderStatus = createEnum("orderStatus", com.jinnyshop5.order.constant.OrderStatus.class);
 
-    public final DateTimePath<java.time.LocalDateTime> regTime = createDateTime("regTime", java.time.LocalDateTime.class);
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> regTime = _super.regTime;
 
-    public final DateTimePath<java.time.LocalDateTime> updateTime = createDateTime("updateTime", java.time.LocalDateTime.class);
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> updateTime = _super.updateTime;
 
     public QOrder(String variable) {
         this(Order.class, forVariable(variable), INITS);

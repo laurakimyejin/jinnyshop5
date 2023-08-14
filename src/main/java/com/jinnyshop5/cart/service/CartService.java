@@ -77,17 +77,11 @@ public class CartService {
 
         Cart cart = cartRepository.findByMemberId(member.getId());
 
-        log.info("{}",cart.getId());
-
         if(cart == null){
             return cartDetailDtoList;
         }
 
-        log.info("{}",cartProductRepository.findByCartDetailDtoList(cart.getId()));
-
         cartDetailDtoList = cartProductRepository.findByCartDetailDtoList(cart.getId());
-
-        log.info("{}",cartDetailDtoList.isEmpty());
 
         return cartDetailDtoList;
     }

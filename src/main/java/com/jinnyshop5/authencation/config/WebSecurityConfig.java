@@ -12,14 +12,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 
 @RequiredArgsConstructor
 @Configuration
@@ -33,13 +31,6 @@ public class WebSecurityConfig {
 
 
     @Bean
-    public WebSecurityCustomizer configure() {
-        return (web -> web.ignoring()
-                .requestMatchers(toH2Console())
-                .antMatchers("/img/**", "/css/**", "/js/**"));
-    }
-
-    @Bean
     public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .httpBasic().disable()
@@ -48,9 +39,6 @@ public class WebSecurityConfig {
 
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-        http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-
 
         http.authorizeRequests()
                 .antMatchers("/api/token").permitAll()
@@ -64,7 +52,6 @@ public class WebSecurityConfig {
                 .failureUrl("/members/login/error")
                 .successHandler(successHandler());
 
-
         http.oauth2Login()
                 .loginPage("/members/login")
                 .authorizationEndpoint()
@@ -76,15 +63,14 @@ public class WebSecurityConfig {
 
         http.logout()
                 .logoutUrl("/members/logout")
-                .clearAuthentication(true)
-                .deleteCookies("refresh_token")
+                .deleteCookies("access_token","refresh_token")
                 .logoutSuccessUrl("/members/login");
-
 
         http.exceptionHandling()
                 .defaultAuthenticationEntryPointFor(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED),
                         new AntPathRequestMatcher("/api/**"));
 
+        http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -100,8 +86,8 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public SuccessHandler successHandler () {
-        return new SuccessHandler(tokenProvider,
+    public LoginSuccessHandler successHandler () {
+        return new LoginSuccessHandler(tokenProvider,
                 successHandlerUtils,
                 memberService
         );

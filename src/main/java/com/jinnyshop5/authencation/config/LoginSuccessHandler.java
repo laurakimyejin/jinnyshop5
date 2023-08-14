@@ -18,8 +18,8 @@ import static com.jinnyshop5.authencation.util.SuccessHandlerUtils.ACCESS_TOKEN_
 import static com.jinnyshop5.authencation.util.SuccessHandlerUtils.REFRESH_TOKEN_DURATION;
 
 @RequiredArgsConstructor
-@Component ("SuccessHandler")
-public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
+@Component ("LoginSuccessHandler")
+public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     private final TokenProvider tokenProvider;
     private final SuccessHandlerUtils successHandlerUtils;

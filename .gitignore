@@ -38,3 +38,6 @@ out/
 /src/main/resources/application_db_location.yml
 /src/main/resources/application-DBLocation.yml
 /src/main/resources/application-oauth.yml
+/src/main/resources/static/js/test/
+/src/main/resources/templates/test/
+/src/main/java/com/jinnyshop5/test/

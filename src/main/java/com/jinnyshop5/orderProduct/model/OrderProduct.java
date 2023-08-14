@@ -1,5 +1,6 @@
 package com.jinnyshop5.orderProduct.model;
 
+import com.jinnyshop5.common.model.BaseTimeEntity;
 import com.jinnyshop5.order.model.Order;
 import com.jinnyshop5.product.entity.Product;
 
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-public class OrderProduct extends BaseEntity {
+public class OrderProduct extends BaseTimeEntity {
 
     @Id
     @GeneratedValue
