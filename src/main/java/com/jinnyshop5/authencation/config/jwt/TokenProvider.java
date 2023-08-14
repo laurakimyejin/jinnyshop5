@@ -44,7 +44,6 @@ public class TokenProvider {
 
     public boolean validToken(String token) {
         try {
-            log.info("---- {}",token);
             Jwts.parserBuilder()
                     .setSigningKey(jwtProperties.getSecretKey())
                     .build()

@@ -1,3 +1,4 @@
+
 // 쿠키를 가져오는 함수
 function getCookie(key) {
 
@@ -25,12 +26,13 @@ function httpRequest(method, url, body, success, fail) {
         method: method,
         headers: { // 로컬 스토리지에서 액세스 토큰 값을 가져와 헤더에 추가
             Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: body,
     }).then(response => {
         if (response.status === 200 || response.status === 201) {
-            return success();
+            console.log(response.json);
+            return response.json();
         }
         const refresh_token = getCookie('refresh_token');
         if (response.status === 401 && refresh_token) {
@@ -38,10 +40,10 @@ function httpRequest(method, url, body, success, fail) {
                 method: 'POST',
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    refreshToken: getCookie('refresh_token'),
+                    refreshToken: getCookie('refresh_token')
                 }),
             })
                 .then(res => {
@@ -58,4 +60,16 @@ function httpRequest(method, url, body, success, fail) {
             return fail();
         }
     });
+}
+
+var link = document.getElementById('cart');
+if (link) {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        var url = '/api' + link.getAttribute('href');
+        function redirect(){
+            location.replace('/cart');
+        }
+        httpRequest('GET',url,null,redirect,redirect)
+    })
 }

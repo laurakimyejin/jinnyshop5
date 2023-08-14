@@ -1,6 +1,7 @@
 package com.jinnyshop5.cartProduct.model;
 
 import com.jinnyshop5.cart.model.Cart;
+import com.jinnyshop5.common.model.BaseEntity;
 import com.jinnyshop5.product.entity.Product;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name="Cart_product")
-public class CartProduct {
+public class CartProduct extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -30,6 +31,20 @@ public class CartProduct {
     //같은 상품을 카트에 몇개 담을지?
     private int count;
 
+    public static CartProduct createCartProduct(Cart cart, Product product, int count){
+        CartProduct cartProduct = new CartProduct();
+        cartProduct.setCart(cart);
+        cartProduct.setProduct(product);
+        cartProduct.setCount(count);
+        return cartProduct;
+    }
 
 
+
+    public void addCount(int count){
+        this.count += count;
+    }
+    public void updateCount(int count){
+        this.count = count;
+    }
 }

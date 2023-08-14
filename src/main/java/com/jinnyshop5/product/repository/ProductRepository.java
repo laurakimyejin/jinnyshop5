@@ -17,6 +17,8 @@ public interface ProductRepository extends JpaRepository<Product, Long>,
         QuerydslPredicateExecutor<Product> {
     List<Product> findByProductName(String productName);
 
+    Product findById(long id);
+
     List<Product> findByProductNameOrProductDetail(String productName, String productDetail);
 
     List<Product> findByPriceLessThan(Integer price);

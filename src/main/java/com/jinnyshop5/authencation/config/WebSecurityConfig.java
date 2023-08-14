@@ -5,6 +5,7 @@ import com.jinnyshop5.authencation.config.oauth.OAuth2AuthorizationRequestBasedO
 import com.jinnyshop5.authencation.config.oauth.OAuth2SuccessHandler;
 import com.jinnyshop5.authencation.config.oauth.OAuth2UserCustomService;
 import com.jinnyshop5.authencation.repository.RefreshTokenRepository;
+import com.jinnyshop5.authencation.util.SuccessHandlerUtils;
 import com.jinnyshop5.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +28,7 @@ public class WebSecurityConfig {
     private final OAuth2UserCustomService oAuth2UserCustomService;
     private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
+    private final SuccessHandlerUtils successHandlerUtils;
     private final MemberService memberService;
 
 
@@ -39,7 +41,7 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
-        http
+        http.csrf().disable()
                 .httpBasic().disable()
                 .formLogin().disable()
                 .logout().disable();
@@ -91,7 +93,7 @@ public class WebSecurityConfig {
     @Bean
     public OAuth2SuccessHandler oAuth2SuccessHandler () {
         return new OAuth2SuccessHandler(tokenProvider,
-                refreshTokenRepository,
+                successHandlerUtils,
                 oAuth2AuthorizationRequestBasedOnCookieRepository(),
                 memberService
         );
@@ -100,7 +102,7 @@ public class WebSecurityConfig {
     @Bean
     public SuccessHandler successHandler () {
         return new SuccessHandler(tokenProvider,
-                refreshTokenRepository,
+                successHandlerUtils,
                 memberService
         );
     }

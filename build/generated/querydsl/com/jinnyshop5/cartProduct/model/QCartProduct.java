@@ -22,13 +22,27 @@ public class QCartProduct extends EntityPathBase<CartProduct> {
 
     public static final QCartProduct cartProduct = new QCartProduct("cartProduct");
 
+    public final com.jinnyshop5.common.model.QBaseEntity _super = new com.jinnyshop5.common.model.QBaseEntity(this);
+
     public final com.jinnyshop5.cart.model.QCart cart;
 
     public final NumberPath<Integer> count = createNumber("count", Integer.class);
 
+    //inherited
+    public final StringPath createdBy = _super.createdBy;
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
+    //inherited
+    public final StringPath modifiedBy = _super.modifiedBy;
+
     public final com.jinnyshop5.product.entity.QProduct product;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> regTime = _super.regTime;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> updateTime = _super.updateTime;
 
     public QCartProduct(String variable) {
         this(CartProduct.class, forVariable(variable), INITS);

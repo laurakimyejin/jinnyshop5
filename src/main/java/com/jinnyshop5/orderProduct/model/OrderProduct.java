@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 /*orderproduct, order 엔티티 단방향 매핑*/
 @Entity
@@ -34,6 +35,21 @@ public class OrderProduct extends BaseEntity {
 
     private int count; //수량.
 
+    public static OrderProduct createOrderProduct(Product product, int count){
+        OrderProduct orderProduct = new OrderProduct();
+        orderProduct.setProduct(product);
+        orderProduct.setCount(count);
+        orderProduct.setOrderPrice(product.getPrice());
 
+        product.removeStock(count);
+        return orderProduct;
+    }
 
+    public int getTotalPrice(){
+        return orderPrice*count;
+    }
+
+    public void cancel(){
+        this.getProduct().addStock(count);
+    }
 }
