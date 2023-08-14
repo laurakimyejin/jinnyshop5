@@ -51,20 +51,12 @@ public class CartController {
         return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
     }
 
-    @GetMapping("/cart")
-    public String orderHist(){
+    @GetMapping(value = "/cart")
+    public String orderHist(Principal principal, Model model){
+        List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
+        model.addAttribute("cartItems", cartDetailList);
         return "cart/cartList";
     }
-
-    @GetMapping("/api/cart")
-    public ResponseEntity<?> orderHistApi(Principal principal){
-        List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
-        return ResponseEntity.status(HttpStatus.OK)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(cartDetailList);
-    }
-
-
 
     @PatchMapping(value = "/cartItem/{cartItemId}")
     public @ResponseBody ResponseEntity updateCartProduct(@PathVariable("cartItemId") Long cartItemId, int count, Principal principal){
