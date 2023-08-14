@@ -34,6 +34,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         successHandlerUtils.addRefreshTokenToCookie(request, response, refreshToken);
 
         String accessToken = tokenProvider.generateToken(member, ACCESS_TOKEN_DURATION);
+        successHandlerUtils.addAccessTokenToCookie(request, response, accessToken);
         String targetUrl = successHandlerUtils.getTargetUrl(accessToken);
 
         getRedirectStrategy().sendRedirect(request, response, targetUrl);

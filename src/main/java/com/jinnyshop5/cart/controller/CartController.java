@@ -40,39 +40,41 @@ public class CartController {
         }
 
         String email = principal.getName();
-        Long cartItemId;
+        Long cartProductId;
 
         try {
-            cartItemId = cartService.addCart(cartProductDto, email);
+            cartProductId = cartService.addCart(cartProductDto, email);
         } catch(Exception e){
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
+        return new ResponseEntity<Long>(cartProductId, HttpStatus.OK);
     }
 
     @GetMapping(value = "/cart")
     public String orderHist(Principal principal, Model model){
         List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
-        model.addAttribute("cartItems", cartDetailList);
+        log.info(principal.getName());
+        model.addAttribute("cartProducts", cartDetailList);
+        log.info("{}",cartDetailList.get(0));
         return "cart/cartList";
     }
 
-    @PatchMapping(value = "/cartItem/{cartItemId}")
-    public @ResponseBody ResponseEntity updateCartProduct(@PathVariable("cartItemId") Long cartItemId, int count, Principal principal){
+    @PatchMapping(value = "/cartProduct/{cartProductId}")
+    public @ResponseBody ResponseEntity updateCartProduct(@PathVariable("cartProductId") Long cartProductId, int count, Principal principal){
 
         if(count <= 0){
             return new ResponseEntity<String>("최소 1개 이상 담아주세요", HttpStatus.BAD_REQUEST);
-        } else if(!cartService.validateCartProduct(cartItemId, principal.getName())){
+        } else if(!cartService.validateCartProduct(cartProductId, principal.getName())){
             return new ResponseEntity<String>("수정 권한이 없습니다.", HttpStatus.FORBIDDEN);
         }
 
-        cartService.updateCartProductCount(cartItemId, count);
-        return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
+        cartService.updateCartProductCount(cartProductId, count);
+        return new ResponseEntity<Long>(cartProductId, HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/cartItem/{cartItemId}")
-    public @ResponseBody ResponseEntity deleteCartItem(@PathVariable("cartItemId") Long cartProductId, Principal principal){
+    @DeleteMapping(value = "/cartProduct/{cartProductId}")
+    public @ResponseBody ResponseEntity deleteCartProduct(@PathVariable("cartProductId") Long cartProductId, Principal principal){
 
         if(!cartService.validateCartProduct(cartProductId, principal.getName())){
             return new ResponseEntity<String>("수정 권한이 없습니다.", HttpStatus.FORBIDDEN);
