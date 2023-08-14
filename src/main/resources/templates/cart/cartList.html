@@ -72,10 +72,10 @@
                 </td>
                 <td class="d-flex">
                     <div class="repImgDiv align-self-center">
-                        <img th:src="${cartProduct.imgUrl}" class = "rounded repImg" th:alt="${cartProduct.productNm}">
+                        <img th:src="${cartProduct.imgUrl}" class = "rounded repImg" th:alt="${cartProduct.productName}">
                     </div>
                     <div class="align-self-center">
-                        <span th:text="${cartProduct.productNm}" class="fs24 font-weight-bold"></span>
+                        <span th:text="${cartProduct.productName}" class="fs24 font-weight-bold"></span>
                         <div class="fs18 font-weight-light">
                             <span class="input-group mt-2">
                                 <span th:id="'price_' + ${cartProduct.cartProductId}"

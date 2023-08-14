@@ -14,6 +14,7 @@ import com.jinnyshop5.order.service.OrderService;
 import com.jinnyshop5.product.entity.Product;
 import com.jinnyshop5.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.util.StringUtils;
@@ -22,6 +23,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -70,12 +72,22 @@ public class CartService {
 
         Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("Unexpected user"));
+
+        log.info(member.getMemberName());
+
         Cart cart = cartRepository.findByMemberId(member.getId());
+
+        log.info("{}",cart.getId());
+
         if(cart == null){
             return cartDetailDtoList;
         }
 
+        log.info("{}",cartProductRepository.findByCartDetailDtoList(cart.getId()));
+
         cartDetailDtoList = cartProductRepository.findByCartDetailDtoList(cart.getId());
+
+        log.info("{}",cartDetailDtoList.isEmpty());
 
         return cartDetailDtoList;
     }
